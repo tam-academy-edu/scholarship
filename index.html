@@ -1599,7 +1599,7 @@
   const ACADEMY_WHATSAPP = '201010099423';
 
   // رابط الوسيط المخفي (Google Apps Script) الذي يمرّر الطلب إلى جروب تيليجرام
-  const TELEGRAM_PROXY_URL = 'https://script.google.com/macros/s/AKfycbzN0zbi-E1p2FGhIU_g_D23P-GlVZuaMHoZTORkRk9n7_wTVAX1MDtee-40HD0KwppY/exec';
+  const TELEGRAM_PROXY_URL = 'https://script.google.com/macros/s/AKfycbyFejpNl6wtj-GlgKgAD2eqDkDdnnb2lXyEp4sPGHvAa3lXCloFJI97eFeJJlRi2UCF/exec';
 
   const form = document.getElementById('applyForm');
   const success = document.getElementById('successMsg');
@@ -1722,6 +1722,26 @@
     try {
       const body = new URLSearchParams();
       body.append('text', message);
+      // إرسال كل حقل لوحده عشان الشيت يطلع منظّم
+      body.append('fullName', get('fullName'));
+      body.append('age', get('age'));
+      body.append('governorate', get('governorate'));
+      body.append('address', get('address'));
+      body.append('whatsapp', get('whatsapp'));
+      body.append('qualification', get('qualification'));
+      body.append('department', get('department'));
+      body.append('track', get('track'));
+      body.append('reason', get('reason'));
+      body.append('experience', get('experience'));
+      body.append('english', get('english'));
+      body.append('learning', get('learning'));
+      body.append('punctuality', get('punctuality'));
+      body.append('scenario1', get('scenario1'));
+      body.append('scenario2', get('scenario2'));
+      body.append('internet', get('internet'));
+      body.append('devices', getAll('devices'));
+      body.append('power', get('power'));
+      body.append('available', get('available'));
       fetch(TELEGRAM_PROXY_URL, {
         method: 'POST',
         mode: 'no-cors',
